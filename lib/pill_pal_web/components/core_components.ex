@@ -22,21 +22,24 @@ defmodule PillPalWeb.CoreComponents do
   @doc """
   Renders a header with title.
   """
+  attr :logo_url, :string, required: true
 
   def header(assigns) do
     ~H"""
     <div>
       <div class="sticky top-0 z-50 bg-white rounded-b-lg drop-shadow-lg">
         <div class="container mx-auto" id="header">
-          <div class="relative flex items-center justify-between h-16 2xl:h-20">
-            <div class="flex h-16 2xl:h-20">
+          <div class="relative flex items-center justify-between h-16 lg:h-20">
+            <div class="flex h-16 lg:h-20">
               <div class="flex items-center shrink-0">
-                <h1>Hello</h1>
+                <a href="/" class="h-16 lg:h-20">
+                  <img class="object-cover w-full h-full lazyload" src={@logo_url} alt="Logo" />
+                </a>
               </div>
               <!-- Start: Desktop menu items -->
-              <nav id="desktop-nav-items-component" class="hidden 2xl:flex 2xl:grow">
+              <nav id="desktop-nav-items-component" class="hidden lg:flex lg:grow">
                 <ul class="flex" id="mega-nav-header-desktop-menu">
-                  <li class="flex flex-col justify-center h-20 ml-6 mr-3">
+                  <li class="flex flex-col justify-center h-20 mx-3">
                     <div>
                       <a
                         class="block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-cool-grey-450 hover:text-gray-700"
@@ -76,7 +79,7 @@ defmodule PillPalWeb.CoreComponents do
               <!-- End: Desktop menu items -->
             </div>
 
-            <div class="relative flex items-center self-end h-16 2xl:h-20">
+            <div class="relative flex items-center self-end h-16 lg:h-20">
               <div
                 id="hamburger-menu-mobile"
                 phx-click={show_mobile_menu()}
@@ -301,7 +304,7 @@ defmodule PillPalWeb.CoreComponents do
               phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
               phx-key="escape"
               phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
-              class="relative hidden transition bg-white shadow-lg shadow-zinc-700/10 ring-zinc-700/10 rounded-2xl p-14 ring-1"
+              class="relative hidden transition bg-white rounded-lg shadow-lg shadow-zinc-700/10 ring-zinc-700/10 p-14 ring-1"
             >
               <div class="absolute top-6 right-5">
                 <button
