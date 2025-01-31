@@ -19,7 +19,10 @@ defmodule PillPalWeb.Router do
 
     get "/home", PageController, :home
 
-    live "/", LandingLive
+    live_session :default, on_mount: PillPalWeb.Plug.AssignsDefaults do
+      live "/", LandingLive, :landing
+      live "/routine", PillPall.RoutineLive, :routine
+    end
   end
 
   # Other scopes may use custom stacks.

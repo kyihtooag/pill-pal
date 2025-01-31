@@ -23,6 +23,7 @@ defmodule PillPalWeb.CoreComponents do
   Renders a header with title.
   """
   attr :logo_url, :string, required: true
+  attr :live_action, :atom, required: true
 
   def header(assigns) do
     ~H"""
@@ -40,19 +41,23 @@ defmodule PillPalWeb.CoreComponents do
               <nav id="desktop-nav-items-component" class="hidden lg:flex lg:grow">
                 <ul class="flex" id="mega-nav-header-desktop-menu">
                   <li class="flex flex-col justify-center h-20 mx-3">
-                    <div>
-                      <a
-                        class="block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-cool-grey-450 hover:text-gray-700"
-                        href="#"
-                      >
-                        Home
-                      </a>
-                    </div>
+                    <a
+                      class={[
+                        "block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-gray-700 hover:font-bold hover:text-teal-600",
+                        @live_action == :landing && "font-bold text-teal-600"
+                      ]}
+                      href="/"
+                    >
+                      Home
+                    </a>
                   </li>
                   <li class="flex flex-col justify-center h-20 mx-3">
                     <a
-                      class="block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-cool-grey-450 hover:text-gray-700"
-                      href="#"
+                      class={[
+                        "block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-gray-700 hover:font-bold hover:text-teal-600",
+                        @live_action == :routine && "font-bold text-teal-600"
+                      ]}
+                      href="/routine"
                     >
                       Routine
                     </a>
@@ -60,7 +65,10 @@ defmodule PillPalWeb.CoreComponents do
 
                   <li class="flex flex-col justify-center h-20 mx-3">
                     <a
-                      class="block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-cool-grey-450 hover:text-gray-700"
+                      class={[
+                        "block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-gray-700 hover:font-bold hover:text-teal-600",
+                        @live_action == :records && "font-bold text-teal-600"
+                      ]}
                       href="#"
                     >
                       Records
@@ -68,7 +76,10 @@ defmodule PillPalWeb.CoreComponents do
                   </li>
                   <li class="flex flex-col justify-center h-20 mx-3">
                     <a
-                      class="block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-cool-grey-450 hover:text-gray-700"
+                      class={[
+                        "block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-gray-700 hover:font-bold hover:text-teal-600",
+                        @live_action == :about && "font-bold text-teal-600"
+                      ]}
                       href="#"
                     >
                       About us
