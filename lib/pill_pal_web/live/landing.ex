@@ -15,10 +15,10 @@ defmodule PillPalWeb.LandingLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="relative z-30 h-screen">
-      <div class="flex flex-col w-full h-full space-y-2 lg:flex-row lg:space-x-4">
-        <div class="flex flex-col items-center w-full h-full space-y-6">
-          <div class="flex flex-col items-center w-auto space-y-5 lg:w-120 ">
+    <div class="relative z-30">
+      <div class="flex flex-col w-full h-full space-y-2 xl:flex-row xl:space-x-4">
+        <div class="flex flex-col items-center w-full h-full space-y-6 md:h-auto md:flex-row xl:flex-col md:justify-between xl:justify-normal">
+          <div class="flex flex-col items-center w-auto space-y-5 xl:w-120 ">
             <div class="flex items-center justify-between w-full">
               <span class="text-lg font-bold">Hi Bob</span>
               <button class="px-3 py-1 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
@@ -26,55 +26,72 @@ defmodule PillPalWeb.LandingLive do
               </button>
             </div>
 
-            <.circular_progress_bar
-              progress={80}
-              radius={120}
-              stroke={20}
-              text="Hello"
-              text_pending={10}
-            />
+            <div class="flex md:hidden">
+              <.circular_progress_bar
+                progress={80}
+                radius={120}
+                stroke={20}
+                text="Hello"
+                text_pending={10}
+              />
+            </div>
+
+            <div class="hidden md:flex">
+              <.circular_progress_bar
+                progress={80}
+                radius={150}
+                stroke={20}
+                text="Hello"
+                text_pending={10}
+              />
+            </div>
           </div>
 
-          <div class="flex flex-col items-center mt-10 space-y-4">
-            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 lg:w-120">
+          <div class="flex flex-col items-center mt-10 ml-0 space-y-4 md:ml-4 xl:ml-0">
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 md:w-96 xl:w-120">
               <div class="flex items-center space-x-3">
                 <span class="text-lg">Finish project report</span>
               </div>
-              <button class="text-red-500 hover:text-red-700">
-                ✖
+              <button class="text-gray-500 hover:text-green-700">
+                <.icon name="hero-check-circle" class="w-6 h-6" />
               </button>
             </div>
 
-            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 lg:w-120">
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 md:w-96 xl:w-120">
               <div class="flex items-center space-x-3">
                 <span class="text-lg">Buy groceries</span>
               </div>
-              <button class="text-red-500 hover:text-red-700">
-                ✖
+              <button class="text-gray-500 hover:text-green-700">
+                <.icon name="hero-check-circle" class="w-6 h-6" />
               </button>
             </div>
 
-            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 lg:w-120">
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 md:w-96 xl:w-120">
               <div class="flex items-center space-x-3">
                 <span class="text-lg">Read a book</span>
               </div>
-              <button class="text-red-500 hover:text-red-700">
-                ✖
+              <button class="text-gray-500 hover:text-green-700">
+                <.icon name="hero-check-circle" class="w-6 h-6" />
               </button>
             </div>
 
-            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 lg:w-120">
+            <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-80 md:w-96 xl:w-120">
               <div class="flex items-center space-x-3">
-                <input type="checkbox" class="w-5 h-5 text-blue-500 rounded focus:ring-2" />
                 <span class="text-lg">Read a book</span>
               </div>
-              <button class="text-red-500 hover:text-red-700">
-                ✖
+              <button class="text-gray-500 hover:text-green-700">
+                <.icon name="hero-check-circle" class="w-6 h-6 stroke-2" />
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between px-3 py-2.5 bg-blue-500 rounded-lg hover:bg-blue-600 w-80 md:w-96 xl:w-120">
+              <button class="w-full text-white ">
+                + Add Ah Hoc Medication
               </button>
             </div>
           </div>
         </div>
-        <div class="flex-col items-center hidden w-full h-full space-y-4 lg:flex">
+        <div class="flex-col items-center hidden w-full h-full space-y-4 xl:flex">
           <div class="p-4 mx-auto bg-white rounded-lg shadow-xl w-120">
             <!-- Header -->
             <div class="flex items-center justify-between mb-3">

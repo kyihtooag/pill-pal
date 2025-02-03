@@ -1,6 +1,18 @@
-<main role="main">
+<main role="main" class="flex flex-col min-h-screen bg-gray-100">
   <.header logo_url={~p"/images/logo.png"} live_action={@live_action} />
-  <div class="container py-10 bg-gray-100">
+  <div class="container flex-grow py-10">
     {@inner_content}
   </div>
+
+  <footer class="py-6 text-center text-white bg-teal-600">
+      <div class="flex items-center justify-between px-20 mx-auto">
+          <p class="text-sm">&copy; 2025 PillPal. All rights reserved.</p>
+          <nav class="mt-2">
+              <a href="#" class="mx-2 text-gray-700 hover:text-white">Privacy Policy</a>
+              <a href="#" class="mx-2 text-gray-700 hover:text-white">Terms of Service</a>
+              <a href="#" class="mx-2 text-gray-700 hover:text-white">Contact</a>
+          </nav>
+      </div>
+  </footer>
+
 </main>

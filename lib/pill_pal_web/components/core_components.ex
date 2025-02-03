@@ -27,8 +27,8 @@ defmodule PillPalWeb.CoreComponents do
 
   def header(assigns) do
     ~H"""
-    <div>
-      <div class="sticky top-0 z-50 bg-white rounded-b-lg drop-shadow-lg">
+    <div class="sticky top-0 z-50">
+      <div class="bg-white rounded-b-lg drop-shadow-lg">
         <div class="container mx-auto" id="header">
           <div class="relative flex items-center justify-between h-16 lg:h-20">
             <div class="flex h-16 lg:h-20">
@@ -67,11 +67,11 @@ defmodule PillPalWeb.CoreComponents do
                     <a
                       class={[
                         "block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-gray-700 hover:font-bold hover:text-teal-600",
-                        @live_action == :records && "font-bold text-teal-600"
+                        @live_action == :insights && "font-bold text-teal-600"
                       ]}
-                      href="#"
+                      href="/insights"
                     >
-                      Records
+                      Insights
                     </a>
                   </li>
                   <li class="flex flex-col justify-center h-20 mx-3">
