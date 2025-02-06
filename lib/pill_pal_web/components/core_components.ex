@@ -33,7 +33,7 @@ defmodule PillPalWeb.CoreComponents do
           <div class="relative flex items-center justify-between h-16 lg:h-20">
             <div class="flex h-16 lg:h-20">
               <div class="flex items-center shrink-0">
-                <a href="/" class="h-16 lg:h-20">
+                <a href="/" class="w-32 h-16 lg:w-40 lg:h-20">
                   <img class="object-cover w-full h-full lazyload" src={@logo_url} alt="Logo" />
                 </a>
               </div>
