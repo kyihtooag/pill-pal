@@ -35,3 +35,6 @@ pill_pal-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore ENV file
+.env
+

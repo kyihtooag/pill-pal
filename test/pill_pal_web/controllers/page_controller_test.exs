@@ -3,6 +3,6 @@ defmodule PillPalWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")
-    assert html_response(conn, 200) =~ "Hi Bob"
+    assert html_response(conn, 302) =~ "redirected"
   end
 end
