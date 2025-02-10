@@ -19,13 +19,13 @@ defmodule PillPalWeb.PillPall.RoutineLive do
   def render(assigns) do
     ~H"""
     <div class="relative z-30 justify-center px-0 overflow-hidden 2xl:px-10">
-      <div class="flex items-center w-full">
+      <div class="flex items-center w-full mb-4">
         <span class="text-lg font-bold">Sessions</span>
       </div>
 
       <div class="flex flex-row justify-between">
-        <div class="flex flex-wrap w-full h-auto my-3 space-x-0 space-y-10 overflow-x-auto xl:flex-row xl:space-x-4 xl:space-y-0">
-          <div class="flex flex-col w-auto p-4 mx-auto bg-white rounded-lg drop-shadow-lg">
+        <div class="flex flex-wrap w-full h-auto overflow-x-auto">
+          <div class="flex flex-col w-auto p-4 mx-auto mb-3 bg-white rounded-lg drop-shadow-lg">
             <div class="flex flex-col items-center justify-center text-lg font-bold">
               <div>Morning Session</div>
               <div>[ 6:00 AM - 9:00 AM ]</div>
@@ -75,7 +75,7 @@ defmodule PillPalWeb.PillPall.RoutineLive do
               </div>
             </div>
           </div>
-          <div class="flex flex-col w-auto p-4 mx-auto bg-white rounded-lg drop-shadow-lg">
+          <div class="flex flex-col w-auto p-4 mx-auto mb-3 bg-white rounded-lg drop-shadow-lg">
             <div class="flex flex-col items-center justify-center text-lg font-bold">
               <div>Morning Session</div>
               <div>[ 6:00 AM - 9:00 AM ]</div>
@@ -125,7 +125,7 @@ defmodule PillPalWeb.PillPall.RoutineLive do
               </div>
             </div>
           </div>
-          <div class="flex flex-col w-auto p-4 mx-auto bg-white rounded-lg drop-shadow-lg">
+          <div class="flex flex-col w-auto p-4 mx-auto mb-3 bg-white rounded-lg drop-shadow-lg">
             <div class="flex flex-col items-center justify-center text-lg font-bold">
               <div>Morning Session</div>
               <div>[ 6:00 AM - 9:00 AM ]</div>
@@ -175,7 +175,7 @@ defmodule PillPalWeb.PillPall.RoutineLive do
               </div>
             </div>
           </div>
-          <div class="flex flex-col w-auto p-4 mx-auto bg-white rounded-lg drop-shadow-lg">
+          <div class="flex flex-col w-auto p-4 mx-auto mb-3 bg-white rounded-lg drop-shadow-lg">
             <div class="flex flex-col items-center justify-center text-lg font-bold">
               <div>Morning Session</div>
               <div>[ 6:00 AM - 9:00 AM ]</div>
