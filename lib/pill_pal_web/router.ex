@@ -14,16 +14,29 @@ defmodule PillPalWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PillPalWeb do
-    pipe_through :browser
+  pipeline :ensure_auth do
+    plug :fetch_session
+    plug PillPalWeb.Plug.EnsureLogin
+  end
 
-    get "/home", PageController, :home
+  scope "/", PillPalWeb do
+    pipe_through [:browser, :ensure_auth]
+
+    get "/logout", AuthController, :logout
 
     live_session :default, on_mount: PillPalWeb.Plug.AssignsDefaults do
       live "/", LandingLive, :landing
       live "/routine", PillPall.RoutineLive, :routine
       live "/insights", PillPall.InsightsLive, :insights
     end
+  end
+
+  scope "/", PillPalWeb do
+    pipe_through :browser
+
+    get "/login", AuthController, :login
+    get "/auth/:provider", AuthController, :request
+    get "/auth/:provider/callback", AuthController, :callback
   end
 
   # Other scopes may use custom stacks.

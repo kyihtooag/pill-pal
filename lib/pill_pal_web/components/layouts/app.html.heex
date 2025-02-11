@@ -1,5 +1,9 @@
 <main role="main" class="flex flex-col min-h-screen bg-gray-100">
-  <.header logo_url={~p"/images/logo.png"} live_action={@live_action} />
+  <.header
+    current_user={@current_user}
+    logo_url={~p"/images/logo.png"}
+    live_action={@live_action}
+  />
   <div class="container flex-grow py-10">
     {@inner_content}
   </div>

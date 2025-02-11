@@ -23,6 +23,7 @@ defmodule PillPalWeb.CoreComponents do
   Renders a header with title.
   """
   attr :logo_url, :string, required: true
+  attr :current_user, :map, required: true
   attr :live_action, :atom, required: true
 
   def header(assigns) do
@@ -116,12 +117,12 @@ defmodule PillPalWeb.CoreComponents do
               <div id="avatar-hover-component" class="relative items-center hidden lg:flex">
                 <div
                   id="user-avatar"
-                  class="flex items-center justify-center p-2 overflow-hidden rounded-full shadow-lg"
+                  class="flex items-center justify-center p-1 overflow-hidden rounded-full shadow-lg"
                 >
-                  <div class="w-8 h-8 rounded-full bg-cool-grey-200">
+                  <div class="w-10 h-10 rounded-full bg-cool-grey-200">
                     <img
-                      class="object-cover w-full h-full rounded-full avatar-image lazyload"
-                      src="https://gravatar.com/avatar/1c1509c4270ea2bc4762de7a56a3c0ac?s=400&d=robohash&r=x"
+                      class="object-cover w-full h-full rounded-full lazyload"
+                      src={@current_user.avatar}
                       alt="Avatar"
                     />
                   </div>
@@ -173,12 +174,12 @@ defmodule PillPalWeb.CoreComponents do
                   <div class="w-8 h-8 rounded-full bg-cool-grey-200">
                     <img
                       class="object-cover w-full h-full rounded-full avatar-image lazyload"
-                      src="https://gravatar.com/avatar/1c1509c4270ea2bc4762de7a56a3c0ac?s=400&d=robohash&r=x"
+                      src={@current_user.avatar}
                       alt="Avatar"
                     />
                   </div>
                   <div class="ml-4 title-5 text-cool-grey-700">
-                    Bob
+                    {@current_user.name}
                   </div>
                 </div>
               </li>
