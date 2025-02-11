@@ -22,7 +22,6 @@ defmodule PillPalWeb.Router do
   scope "/", PillPalWeb do
     pipe_through [:browser, :ensure_auth]
 
-    get "/home", PageController, :home
     get "/logout", AuthController, :logout
 
     live_session :default, on_mount: PillPalWeb.Plug.AssignsDefaults do
@@ -32,11 +31,12 @@ defmodule PillPalWeb.Router do
     end
   end
 
-  scope "/auth", PillPalWeb do
+  scope "/", PillPalWeb do
     pipe_through :browser
 
-    get "/:provider", AuthController, :request
-    get "/:provider/callback", AuthController, :callback
+    get "/login", AuthController, :login
+    get "/auth/:provider", AuthController, :request
+    get "/auth/:provider/callback", AuthController, :callback
   end
 
   # Other scopes may use custom stacks.

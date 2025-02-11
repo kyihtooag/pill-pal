@@ -1,4 +1,4 @@
-defmodule PillPalWeb.PageHTML do
+defmodule PillPalWeb.AuthHTML do
   @moduledoc """
   This module contains pages rendered by PageController.
 
@@ -6,5 +6,5 @@ defmodule PillPalWeb.PageHTML do
   """
   use PillPalWeb, :html
 
-  embed_templates "page_html/*"
+  embed_templates "auth_html/*"
 end

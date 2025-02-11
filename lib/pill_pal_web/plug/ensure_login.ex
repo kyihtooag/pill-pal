@@ -18,7 +18,7 @@ defmodule PillPalWeb.Plug.EnsureLogin do
     case get_session(conn, :current_user) do
       nil ->
         conn
-        |> redirect(to: "/auth/google")
+        |> redirect(to: "/login")
         |> halt()
 
       current_user ->

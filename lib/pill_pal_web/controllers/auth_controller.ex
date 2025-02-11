@@ -2,6 +2,10 @@ defmodule PillPalWeb.AuthController do
   use PillPalWeb, :controller
   plug Ueberauth
 
+  def login(conn, _params) do
+    render(conn, :login, layout: false)
+  end
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     current_user = %{
       name: auth.info.name,
@@ -25,6 +29,6 @@ defmodule PillPalWeb.AuthController do
     conn
     |> clear_session()
     |> configure_session(drop: true)
-    |> redirect(external: "/auth/google")
+    |> redirect(external: "/login")
   end
 end

@@ -17,6 +17,8 @@ defmodule PillPalWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Phoenix.ConnTest
+
   using do
     quote do
       # The default endpoint for testing
@@ -34,5 +36,10 @@ defmodule PillPalWeb.ConnCase do
   setup tags do
     PillPal.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  def put_session_user(conn, user: user) do
+    conn
+    |> ConnTest.init_test_session(%{current_user: user})
   end
 end
