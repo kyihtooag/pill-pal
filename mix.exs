@@ -58,7 +58,8 @@ defmodule PillPal.MixProject do
       {:bandit, "~> 1.5"},
       {:ueberauth, "~> 0.10"},
       {:ueberauth_google, "~> 0.10"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:timex, "~> 3.0"}
     ]
   end
 
