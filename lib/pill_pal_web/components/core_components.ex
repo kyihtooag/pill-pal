@@ -56,11 +56,11 @@ defmodule PillPalWeb.CoreComponents do
                     <a
                       class={[
                         "block py-8 border-transparent cursor-pointer whitespace-nowrap button-text-medium text-gray-700 hover:font-bold hover:text-teal-600",
-                        @live_action == :routine && "font-bold text-teal-600"
+                        @live_action == :dosage && "font-bold text-teal-600"
                       ]}
-                      href="/routine"
+                      href="/dosage"
                     >
-                      Routine
+                      Dosage
                     </a>
                   </li>
 

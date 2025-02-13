@@ -24,7 +24,7 @@ module.exports = {
         xl: "1025px",
         "2xl": "1280px",
       },
-      width: {
+      spacing: {
         120: "30rem",
       },
     },

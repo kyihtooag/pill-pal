@@ -12,7 +12,7 @@ defmodule PillPal.AccountsFixtures do
       attrs
       |> Enum.into(%{
         avatar: "some avatar",
-        email: "some email",
+        email: "test_email@example.com",
         name: "some name"
       })
       |> PillPal.Accounts.create_user()
