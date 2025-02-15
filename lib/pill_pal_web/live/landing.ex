@@ -4,7 +4,7 @@ defmodule PillPalWeb.LandingLive do
   @impl true
   def mount(_params, _session, socket) do
     today = Date.utc_today()
-    {:ok, assign(socket, current_date: today)}
+    {:ok, assign(socket, progress: 50, current_date: today)}
   end
 
   @impl true
@@ -21,27 +21,32 @@ defmodule PillPalWeb.LandingLive do
           <div class="flex flex-col items-center w-auto space-y-5 xl:w-120 ">
             <div class="flex items-center justify-between w-full">
               <span class="text-lg font-bold">Hi Bob</span>
-              <button class="px-3 py-1 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+              <button
+                phx-click="increase_progress"
+                class="px-3 py-1 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+              >
                 I'm Feeling...
               </button>
             </div>
 
             <div class="flex md:hidden">
               <.circular_progress_bar
-                progress={80}
+                progress={@progress}
                 radius={120}
-                stroke={20}
+                stroke={22}
                 text="Hello"
+                base_color="text-green-400"
                 text_pending={10}
               />
             </div>
 
             <div class="hidden md:flex">
               <.circular_progress_bar
-                progress={80}
+                progress={@progress}
                 radius={150}
                 stroke={20}
                 text="Hello"
+                base_color="text-green-400"
                 text_pending={10}
               />
             </div>
@@ -174,6 +179,11 @@ defmodule PillPalWeb.LandingLive do
       </div>
     </div>
     """
+  end
+
+  @impl true
+  def handle_event("increase_progress", _, socket) do
+    {:noreply, assign(socket, progress: 80)}
   end
 
   @impl true

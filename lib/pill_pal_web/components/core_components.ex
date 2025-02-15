@@ -203,6 +203,7 @@ defmodule PillPalWeb.CoreComponents do
   attr :radius, :integer, required: true
   attr :stroke, :integer, required: true
   attr :font_size, :integer, default: 24
+  attr :base_color, :string, default: "text-gray-300"
   attr :text_pending, :integer, default: 0
 
   attr :progress, :integer,
@@ -238,7 +239,7 @@ defmodule PillPalWeb.CoreComponents do
           fill="transparent"
           stroke-width={to_string(@stroke)}
           stroke-linecap="round"
-          class="text-gray-300 stroke-current"
+          class={"stroke-current #{@base_color}"}
         />
         <text
           :if={@text}
@@ -261,7 +262,19 @@ defmodule PillPalWeb.CoreComponents do
           stroke-dasharray={@circumference}
           stroke-dashoffset={@offset}
           stroke-linecap="round"
-          class="text-green-600 stroke-current"
+          class="text-white stroke-current"
+          style="transition: stroke-dashoffset 0.35s; transform: rotate(-90deg); transform-origin: 50% 50%"
+        />
+        <circle
+          cx={@cx}
+          cy={@cy}
+          r={@radius}
+          stroke-width={to_string(@stroke - 4)}
+          fill="transparent"
+          stroke-dasharray={@circumference}
+          stroke-dashoffset={@offset}
+          stroke-linecap="round"
+          class="text-green-800 stroke-current"
           style="transition: stroke-dashoffset 0.35s; transform: rotate(-90deg); transform-origin: 50% 50%"
         />
       </svg>
