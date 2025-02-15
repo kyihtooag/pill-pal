@@ -72,10 +72,10 @@ defmodule PillPalWeb.PillPall.DosageLive do
 
             <div
               :if={Enum.empty?(@medications)}
-              class="flex flex-col items-center justify-center pt-10 cursor-pointer h-80 w-60 drop-shadow-lg"
+              class="flex flex-col items-center justify-center pt-10 cursor-pointer h-80 w-60 hover:drop-shadow-lg"
             >
               <div class="flex items-center justify-center w-40 h-40 text-gray-500 bg-gray-200 rounded-full">
-                <.icon name="hero-plus-circle" class="w-16 h-16" />
+                <.icon name="hero-plus" class="w-16 h-16" />
               </div>
 
               <div class="mt-10 text-gray-600 text-md">Add your medications</div>
