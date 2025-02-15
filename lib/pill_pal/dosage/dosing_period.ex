@@ -9,7 +9,6 @@ defmodule PillPal.Dosage.DosingPeriod do
     field :start_time, :time
     field :end_time, :time
 
-    # has_many :medication_logs, PillPal.MedicationLog
     timestamps()
   end
 

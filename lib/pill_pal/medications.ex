@@ -19,7 +19,10 @@ defmodule PillPal.Medications do
 
   """
   def list_medications do
-    Repo.all(Medication)
+    from(m in Medication,
+      preload: [:dosing_periods]
+    )
+    |> Repo.all()
   end
 
   @doc """
@@ -36,24 +39,7 @@ defmodule PillPal.Medications do
       ** (Ecto.NoResultsError)
 
   """
-  def get_medication!(id), do: Repo.get!(Medication, id)
-
-  @doc """
-  Gets a single medication by dosing_period_id.
-
-  Raises `Ecto.NoResultsError` if the Medication does not exist.
-
-  ## Examples
-
-      iex> get_medication_by_dosing_period_id!(morning)
-      %Medication{}
-
-      iex> get_medication_by_dosing_period_id!(evening)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_medication_by_dosing_period_id!(dosing_period_id),
-    do: Repo.get_by!(Medication, dosing_period_id: dosing_period_id)
+  def get_medication!(id), do: Repo.get!(Medication, id) |> Repo.preload(:dosing_periods)
 
   @doc """
   Creates a medication.

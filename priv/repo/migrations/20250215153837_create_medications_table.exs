@@ -11,12 +11,10 @@ defmodule PillPal.Repo.Migrations.CreateMedicationsTable do
       add :meal_timing, :string, null: false
       add :notes, :text
 
-      add :dosing_period_id, references(:dosing_periods, on_delete: :nothing, type: :binary_id)
-
       timestamps()
     end
 
     create index(:medications, [:name])
-    create index(:medications, [:dosing_period_id])
+    create unique_index(:medications, [:name, :unit])
   end
 end

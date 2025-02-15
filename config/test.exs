@@ -11,7 +11,9 @@ config :pill_pal, PillPal.Repo,
   hostname: "localhost",
   database: "pill_pal_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: System.schedulers_online() * 2
+  pool_size: System.schedulers_online() * 2,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

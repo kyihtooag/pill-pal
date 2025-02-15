@@ -2,9 +2,12 @@ defmodule PillPal.Medications.Medication do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias PillPal.Dosage.DosingPeriod
+  alias PillPal.Medications.MedicationDosingPeriod
+
   @meal_timing [:before_meal, :after_meal]
 
-  @required_fields [:name, :medication_type, :dosage, :unit, :meal_timing, :dosing_period_id]
+  @required_fields [:name, :medication_type, :dosage, :unit, :meal_timing]
   @fields @required_fields ++ [:notes]
 
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -17,7 +20,11 @@ defmodule PillPal.Medications.Medication do
     field :meal_timing, Ecto.Enum, values: @meal_timing, default: :after_meal
     field :notes, :string
 
-    belongs_to(:dosing_period, PillPal.Dosage.DosingPeriod)
+    many_to_many(:dosing_periods, DosingPeriod,
+      join_through: MedicationDosingPeriod,
+      on_replace: :delete
+    )
+
     timestamps()
   end
 
@@ -25,5 +32,20 @@ defmodule PillPal.Medications.Medication do
     medication
     |> cast(attrs, @fields)
     |> validate_required(@required_fields)
+    |> unique_constraint([:name, :unit])
+    |> put_assoc(:dosing_periods, Map.get(attrs, :dosing_periods, []))
+    |> validate_dosing_periods(attrs)
+  end
+
+  # If medication is new or dosing_periods is provided in the attrs, validate that at least one dosing period is present
+  defp validate_dosing_periods(changeset, attrs) do
+    if !changeset.data.id || Map.has_key?(attrs, :dosing_periods) do
+      validate_length(changeset, :dosing_periods,
+        min: 1,
+        message: "At least one dosing period is required"
+      )
+    else
+      changeset
+    end
   end
 end

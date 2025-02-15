@@ -8,7 +8,7 @@ defmodule PillPal.DosageTest do
 
     @invalid_attrs %{name: nil, start_time: nil, end_time: nil}
 
-    test "list_dosing_periods/0 returns all users" do
+    test "list_dosing_periods/0 returns all dosing_periods" do
       dosing_period = Factory.insert(:dosing_period)
       assert Dosage.list_dosing_periods() == [dosing_period]
     end
@@ -79,13 +79,13 @@ defmodule PillPal.DosageTest do
       assert dosing_period == Dosage.get_dosing_period!(dosing_period.id)
     end
 
-    test "delete_user/1 deletes the dosing_period" do
+    test "delete_dosing_period/1 deletes the dosing_period" do
       dosing_period = Factory.insert(:dosing_period)
       assert {:ok, %DosingPeriod{}} = Dosage.delete_dosing_period(dosing_period)
       assert_raise Ecto.NoResultsError, fn -> Dosage.get_dosing_period!(dosing_period.id) end
     end
 
-    test "change_user/1 returns a dosing_period changeset" do
+    test "change_dosing_period/1 returns a dosing_period changeset" do
       dosing_period = Factory.insert(:dosing_period)
       assert %Ecto.Changeset{} = Dosage.change_dosing_period(dosing_period)
     end
