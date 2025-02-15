@@ -1,14 +1,12 @@
 defmodule PillPalWeb.Plug.EnsureLoginTest do
   use PillPalWeb.ConnCase, async: true
 
-  import PillPal.AccountsFixtures
-
   alias PillPal.Accounts.User
   alias PillPalWeb.Plug.EnsureLogin
 
   describe "call/2" do
     test "given a current user in session, sets current_user in conn.assigns", %{conn: conn} do
-      current_user = user_fixture()
+      current_user = Factory.insert(:user)
 
       conn =
         Plug.Test.init_test_session(conn, %{current_user: current_user})

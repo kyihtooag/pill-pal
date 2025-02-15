@@ -19,6 +19,7 @@ defmodule PillPal.DataCase do
   using do
     quote do
       alias PillPal.Repo
+      alias PillPal.Factory
 
       import Ecto
       import Ecto.Changeset

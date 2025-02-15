@@ -6,22 +6,20 @@ defmodule PillPal.DosageTest do
   describe "dosing_period" do
     alias PillPal.Dosage.DosingPeriod
 
-    import PillPal.DosageFixtures
-
     @invalid_attrs %{name: nil, start_time: nil, end_time: nil}
 
     test "list_dosing_periods/0 returns all users" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
       assert Dosage.list_dosing_periods() == [dosing_period]
     end
 
     test "get_dosing_period!/1 returns the dosing_period with given id" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
       assert Dosage.get_dosing_period!(dosing_period.id) == dosing_period
     end
 
     test "get_dosing_period_by_name!/1 returns the dosing_period with given email" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
       assert Dosage.get_dosing_period_by_name!(dosing_period.name) == dosing_period
     end
 
@@ -40,7 +38,7 @@ defmodule PillPal.DosageTest do
     end
 
     test "create_dosing_period/1 with existing name returns error changeset" do
-      dosing_period_fixture()
+      Factory.insert(:dosing_period, name: "morning")
 
       attrs = %{
         name: "morning",
@@ -56,7 +54,7 @@ defmodule PillPal.DosageTest do
     end
 
     test "update_dosing_period/2 with valid data updates the dosing_period" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
 
       update_attrs = %{
         name: "afternoon",
@@ -73,7 +71,7 @@ defmodule PillPal.DosageTest do
     end
 
     test "update_dosing_period/2 with invalid data returns error changeset" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
 
       assert {:error, %Ecto.Changeset{}} =
                Dosage.update_dosing_period(dosing_period, @invalid_attrs)
@@ -82,13 +80,13 @@ defmodule PillPal.DosageTest do
     end
 
     test "delete_user/1 deletes the dosing_period" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
       assert {:ok, %DosingPeriod{}} = Dosage.delete_dosing_period(dosing_period)
       assert_raise Ecto.NoResultsError, fn -> Dosage.get_dosing_period!(dosing_period.id) end
     end
 
     test "change_user/1 returns a dosing_period changeset" do
-      dosing_period = dosing_period_fixture()
+      dosing_period = Factory.insert(:dosing_period)
       assert %Ecto.Changeset{} = Dosage.change_dosing_period(dosing_period)
     end
   end

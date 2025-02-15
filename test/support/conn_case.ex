@@ -30,6 +30,8 @@ defmodule PillPalWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import PillPalWeb.ConnCase
+
+      alias PillPal.Factory
     end
   end
 
