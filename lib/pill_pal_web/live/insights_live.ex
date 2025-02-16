@@ -1,4 +1,4 @@
-defmodule PillPalWeb.PillPall.InsightsLive do
+defmodule PillPalWeb.InsightsLive do
   @moduledoc """
   Live route for listing coaches.
   """

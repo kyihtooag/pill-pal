@@ -26,8 +26,9 @@ defmodule PillPalWeb.Router do
 
     live_session :default, on_mount: PillPalWeb.Plug.AssignsDefaults do
       live "/", LandingLive, :landing
-      live "/dosage", PillPall.DosageLive, :dosage
-      live "/insights", PillPall.InsightsLive, :insights
+      live "/dosage", DosageLive.Index, :index
+      live "/dosage/medication/new", DosageLive.Index, :new
+      live "/insights", InsightsLive, :insights
     end
   end
 
