@@ -87,8 +87,10 @@ defmodule PillPalWeb do
 
       # HTML escaping functionality
       import Phoenix.HTML
+
       # Core UI components
       import PillPalWeb.CoreComponents
+      import PillPalWeb.Components.NavigationHeader
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

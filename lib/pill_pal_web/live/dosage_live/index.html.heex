@@ -1,6 +1,10 @@
 <div class="relative z-30 justify-center px-0 overflow-hidden 2xl:px-10">
-  <div class="flex items-center w-full mb-4 ml-4">
-    <span class="text-lg font-bold">Schedule you medication dosage</span>
+  <div class="flex items-center justify-end w-full mb-4 px-14 2xl:px-4">
+    <button 
+      phx-click={JS.navigate(~p"/dosage/dosing_periods")}
+      class="px-3 py-1 text-white bg-blue-500 rounded-lg hover:bg-blue-600 hover:drop-shadow-lg">
+      Manage your dosing periods
+    </button>
   </div>
 
   <%!-- Loading Start --%>
@@ -62,14 +66,25 @@
 </div>
 
 <.modal
-  :if={@live_action in [:medication_new]}
+  :if={@live_action in [:medication_new, :dosing_periods]}
   id="user-modal"
   show
   on_cancel={JS.navigate(~p"/dosage")}
 >
    <.live_component
+   :if={@live_action == :medication_new}
     module={PillPalWeb.DosageLive.FormComponent}
     id={@medication.id || :medication_new}
+    title={@page_title}
+    action={@live_action}
+    medication={@medication}
+    patch={~p"/dosage"}
+  />
+
+  <.live_component
+   :if={@live_action == :dosing_periods}
+    module={PillPalWeb.DosageLive.FormComponent}
+    id={@medication.id || :dosing_periods}
     title={@page_title}
     action={@live_action}
     medication={@medication}
