@@ -237,7 +237,7 @@ defmodule PillPalWeb.CoreComponents do
           cy={@cy}
           r={@radius}
           fill="transparent"
-          stroke-width={to_string(@stroke)}
+          stroke-width={to_string(@stroke - 4)}
           stroke-linecap="round"
           class={"stroke-current #{@base_color}"}
         />

@@ -62,14 +62,14 @@
 </div>
 
 <.modal
-  :if={@live_action in [:new]}
+  :if={@live_action in [:medication_new]}
   id="user-modal"
   show
   on_cancel={JS.navigate(~p"/dosage")}
 >
    <.live_component
     module={PillPalWeb.DosageLive.FormComponent}
-    id={@medication.id || :new}
+    id={@medication.id || :medication_new}
     title={@page_title}
     action={@live_action}
     medication={@medication}

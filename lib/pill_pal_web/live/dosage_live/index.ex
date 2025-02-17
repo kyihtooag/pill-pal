@@ -31,10 +31,16 @@ defmodule PillPalWeb.DosageLive.Index do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  defp apply_action(socket, :new, _params) do
+  defp apply_action(socket, :medication_new, _params) do
     socket
-    |> assign(:page_title, "New User")
+    |> assign(:page_title, "New Medication")
     |> assign(:medication, %Medication{})
+  end
+
+  defp apply_action(socket, :dosing_periods, _params) do
+    socket
+    |> assign(:page_title, "Dosing Periods")
+    |> assign(:dosing_periods, Dosage.list_dosing_periods())
   end
 
   defp apply_action(socket, :index, _params) do
