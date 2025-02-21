@@ -73,7 +73,7 @@
 >
    <.live_component
    :if={@live_action == :medication_new}
-    module={PillPalWeb.DosageLive.FormComponent}
+    module={PillPalWeb.DosageLive.Medications.FormComponent}
     id={@medication.id || :medication_new}
     title={@page_title}
     action={@live_action}
@@ -83,11 +83,11 @@
 
   <.live_component
    :if={@live_action == :dosing_periods}
-    module={PillPalWeb.DosageLive.FormComponent}
-    id={@medication.id || :dosing_periods}
+    module={PillPalWeb.DosageLive.DosingPeriods.ListComponent}
+    id={@dosing_period.id || :dosing_periods}
     title={@page_title}
     action={@live_action}
-    medication={@medication}
+    dosing_period={@dosing_period}
     patch={~p"/dosage"}
   />
 </.modal>

@@ -6,6 +6,7 @@ defmodule PillPalWeb.DosageLive.Index do
   use PillPalWeb, :live_view
 
   alias PillPal.Dosage
+  alias PillPal.Dosage.DosingPeriod
   # alias PillPal.Medications
   alias PillPal.Medications.Medication
 
@@ -40,7 +41,7 @@ defmodule PillPalWeb.DosageLive.Index do
   defp apply_action(socket, :dosing_periods, _params) do
     socket
     |> assign(:page_title, "Dosing Periods")
-    |> assign(:medication, %Medication{})
+    |> assign(:dosing_period, %DosingPeriod{})
     |> assign(:dosing_periods, Dosage.list_dosing_periods())
   end
 

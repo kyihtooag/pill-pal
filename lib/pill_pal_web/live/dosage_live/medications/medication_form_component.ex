@@ -1,4 +1,4 @@
-defmodule PillPalWeb.DosageLive.FormComponent do
+defmodule PillPalWeb.DosageLive.Medications.FormComponent do
   use PillPalWeb, :live_component
 
   alias PillPal.Medications
