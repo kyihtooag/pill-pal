@@ -1,8 +1,10 @@
+<%!-- Dosage Start --%>
 <div class="relative z-30 justify-center px-0 overflow-hidden 2xl:px-10">
   <div class="flex items-center justify-end w-full mb-4 px-14 2xl:px-4">
-    <button 
+    <button
       phx-click={JS.navigate(~p"/dosage/dosing_periods")}
-      class="px-3 py-1 text-white bg-blue-500 rounded-lg hover:bg-blue-600 hover:drop-shadow-lg">
+      class="px-3 py-1 text-white bg-blue-500 rounded-lg hover:bg-blue-600 hover:drop-shadow-lg"
+    >
       Manage your dosing periods
     </button>
   </div>
@@ -64,6 +66,7 @@
     </div>
   </div>
 </div>
+<%!-- Dosage End --%>
 
 <.modal
   :if={@live_action in [:medication_new, :dosing_periods]}
@@ -82,7 +85,7 @@
   />
 
   <.live_component
-   :if={@live_action == :dosing_periods}
+    :if={@live_action == :dosing_periods}
     module={PillPalWeb.DosageLive.DosingPeriods.ListComponent}
     id={@dosing_period.id || :dosing_periods}
     title={@page_title}

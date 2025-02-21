@@ -32,17 +32,6 @@ defmodule PillPalWeb.DosageLive.DosingPeriods.ListComponent do
   def render(assigns) do
     ~H"""
     <div>
-      <header class={["flex items-center justify-between gap-6"]}>
-        <div>
-          <h1 class="text-lg font-semibold leading-8 text-zinc-800">
-            Dosing Periods
-          </h1>
-          <p class="mt-2 text-sm leading-6 text-zinc-600">
-            Use this form to manage your dosing periods.
-          </p>
-        </div>
-      </header>
-
       <.header>
         {@title}
         <:subtitle>Use this form to manage user records in your database.</:subtitle>

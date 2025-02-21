@@ -18,8 +18,8 @@ defmodule PillPalWeb.DosageLive.Index do
 
         socket
         |> assign(:loading, false)
-        |> assign(:dosing_periods, dosing_periods)
         |> assign(:medications, [])
+        |> assign(:dosing_periods, dosing_periods)
       else
         assign(socket, :loading, true)
       end
@@ -34,7 +34,7 @@ defmodule PillPalWeb.DosageLive.Index do
 
   defp apply_action(socket, :medication_new, _params) do
     socket
-    |> assign(:page_title, "New Medication")
+    |> assign(:page_title, "New Medications")
     |> assign(:medication, %Medication{})
   end
 
@@ -42,12 +42,11 @@ defmodule PillPalWeb.DosageLive.Index do
     socket
     |> assign(:page_title, "Dosing Periods")
     |> assign(:dosing_period, %DosingPeriod{})
-    |> assign(:dosing_periods, Dosage.list_dosing_periods())
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Users")
+    |> assign(:page_title, "Dosage")
   end
 
   defp format_time_range(start_time, end_time) do
